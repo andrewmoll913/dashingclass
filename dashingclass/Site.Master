@@ -53,8 +53,8 @@
 
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <a runat="server" href="~/signup.aspx" class="nav-item nav-link">Sign Up</a>
-                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="nav-item nav-link" />
+                            <asp:HyperLink ID="RegisterLink" runat="server" NavigateUrl="~/Account/Register.aspx">Register</asp:HyperLink>
+                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="nav-item nav-link" NavigatUrl="~/Account/Login.aspx" />
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <a runat="server" href="~/Account/Manage" title="Manage your account">Hi,

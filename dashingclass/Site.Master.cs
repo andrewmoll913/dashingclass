@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dashingclass.Logic;
 using Microsoft.AspNet.Identity;
 
 namespace dashingclass
@@ -75,6 +76,15 @@ namespace dashingclass
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            using (ShoppingCartActions shoppingCart = new ShoppingCartActions())
+            {
+                string cartStr = string.Format("Cart ({0})", shoppingCart.GetCount());
+                CartItemCountLink.Text = cartStr;
+            }
         }
     }
 

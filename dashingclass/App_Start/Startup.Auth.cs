@@ -59,11 +59,11 @@ namespace dashingclass
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "95811751845-gn6425klr94vbkh5hjfknvno3tgsd0uk.apps.googleusercontent.com",
+                ClientSecret = "wpWgNto3zVu3S6rhNSstxTIJ"
+            });
         }
     }
 }

@@ -3,40 +3,53 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+        <asp:ListView ID="ProductList" runat="server"
+            SelectMethod="GetProducts"
+            ItemType="dashingclass.Models.Product"
+            GroupItemCount="4"
+            DataKeyNames="ProductId">
+            <EmptyDataTemplate>
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-title">No Items</div>
+                    </div>
+                </div>
+            </EmptyDataTemplate>
+            <EmptyItemTemplate>
+                <div />
+            </EmptyItemTemplate>
+            <GroupTemplate>
+                <div id="itemPlaceholderContainer" class="card-deck" runat="server">
+                    <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
+                </div>
+            </GroupTemplate>
+            <ItemTemplate>
+                <div class="card bg-dark text-white mb-4">
+                    <a href="ProductDetails.aspx?productID=<%#:Item.ProductId%>">
+                        <img src="/Catalog/Images/<%#:Item.ImagePath%>" class="card-img-top img-thumbnail" />
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <%#:Item.ProductBrand %>&nbsp;<%#:Item.ProductSize %>&nbsp;<%#:Item.ProductColor %>&nbsp;<%#:Item.ProductName %>
+                            </h5>
+                            <div class="card-text"><%#: Item.ProductCost %></div>
+                        </div>
+                    </a>
+                    <div class="card-body">
+                        
+                        <a href="/AddToCart.aspx?productID=<%#:Item.ProductId %>" class="btn btn-primary">
+                            Add To Cart                              
+                        </a>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <div id="groupPlaceholderContainer" runat="server">
+                    <div id="groupPlaceholder" runat="server">
+                    </div>
+                </div>
+            </LayoutTemplate>
+        </asp:ListView>
     </div>
 
 </asp:Content>

@@ -176,6 +176,15 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Data\dashingclass.mdf" />
+    <Content Include="App_Data\dashingclass_log.ldf">
+      <DependentUpon>dashingclass.mdf</DependentUpon>
+    </Content>
+    <Content Include="Catalog\Images\BlueCorner-Unisex-T-Shirt-Black.jpg" />
+    <Content Include="Catalog\Images\TopBest-Unisex-Short-Sleeve-Polo-Black.jpg" />
+    <Content Include="Catalog\Images\Unitop-Mens-Denim-Pants-Blue.jpg" />
+    <Content Include="Catalog\Images\Unitop-Mens-Maong-Pants-Blue.jpg" />
+    <Content Include="Catalog\Images\Vintage-Mens-Biker-Motorcycle-Brown-Wax-Real-Leather-Jacket.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -422,9 +431,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

@@ -11,7 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -36,43 +36,38 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+        <header class="container body-content">
+            <nav class="nav navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" runat="server" href="~/">The Dashing Class</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
+
+                <div class="navbar-collapse collapse justify-content-end ml-auto" id="navbarNavAltMarkup">
+
+                    <a runat="server" href="~/" class="nav-item nav-link">Home</a>
+                    <a runat="server" href="~/About" class="nav-item nav-link">About</a>
+                    <a runat="server" href="~/Contact" class="nav-item nav-link">Contact</a>
+                    <asp:HyperLink ID="CartItemCountLink" runat="server" NavigateUrl="~/ShoppingCart.aspx">&nbsp;</asp:HyperLink>
+
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
-                            </ul>
+                            <a runat="server" href="~/signup.aspx" class="nav-item nav-link">Sign Up</a>
+                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="nav-item nav-link" />
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
+                            <a runat="server" href="~/Account/Manage" title="Manage your account">Hi,
+                                <asp:LoginName ID="UserName" runat="server" Font-Bold="true"></asp:LoginName>
+                                !</a>
+                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="nav-item nav-link" />
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </header>
         <div class="container body-content">
+
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
